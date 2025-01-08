@@ -61,13 +61,15 @@ const PORTS = [
     },
     {
         port: 989,
-        protocol: "FTPS",
-        description: "File Transfer Protocol Secure (Data)",
+        protocol: "FTPS (Data)",
+        title: "File Transfer Protocol Secure",
+        description: "FTPS is a secure version of the File Transfer Protocol (FTP) used to transfer files between computers over a network.\n\nFTPS uses two ports, one for data and one for control.",
     },
     {
         port: 990,
-        protocol: "FTPS",
-        description: "File Transfer Protocol Secure (Control)",
+        protocol: "FTPS (Control)",
+        title: "File Transfer Protocol Secure",
+        description: "FTPS is a secure version of the File Transfer Protocol (FTP) used to transfer files between computers over a network.\n\nFTPS uses two ports, one for data and one for control.",
     },
     {
         port: 993,
