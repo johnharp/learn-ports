@@ -13,10 +13,10 @@ function Card() {
         <Pressable style={styles.container} onPress={handleFlip}>
             {({ pressed }) => (
                 <View style={styles.cardContainer}>
-                    <View style={[styles.card, styles.front, pressed && styles.frontPressed, !isFlipped && styles.flip]}>
+                    <View style={[styles.card, styles.front, {opacity: pressed ? 0.5 : 1.0}, !isFlipped && styles.flip]}>
                         <Text>Front</Text>
                     </View>
-                    <View style={[styles.card, styles.back, pressed && styles.backPressed, isFlipped && styles.flip]}>
+                    <View style={[styles.card, styles.back, {opacity: pressed ? 0.5 : 1.0}, isFlipped && styles.flip]}>
                         <Text>Back</Text>
                     </View>
                 </View>
@@ -53,14 +53,6 @@ const styles = StyleSheet.create({
 
     back: {
         backgroundColor: COLORS.cardBack,
-    },
-
-    frontPressed: {
-        backgroundColor: COLORS.cardFrontPressed,
-    },
-
-    backPressed: {
-        backgroundColor: COLORS.cardBackPressed,
     },
 
     flip: {
