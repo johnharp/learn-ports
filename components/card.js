@@ -59,6 +59,9 @@ function Card({ portdata }) {
                             </Text>
                             <Text style={styles.title}>{portdata.title}</Text>
                             <View style={styles.divider}></View>
+                            <Text style={styles.description}>
+                                {portdata.description}
+                            </Text>
                         </View>
                     </Animated.View>
                     <Animated.View
@@ -69,7 +72,7 @@ function Card({ portdata }) {
                             { transform: [{perspective: 1000}, { rotateY: backCardDegrees } ] },
                         ]}
                     >
-                        <Text>Back</Text>
+                        <Text style={styles.port}>{portdata.port}</Text>
                     </Animated.View>
                 </View>
             )}
@@ -105,6 +108,8 @@ const styles = StyleSheet.create({
 
     back: {
         backgroundColor: COLORS.cardBack,
+        alignContent: "center",
+        justifyContent: "center",
     },
 
     flip: {
@@ -112,6 +117,12 @@ const styles = StyleSheet.create({
     },
     header: {
         marginBottom: 1,
+    },
+    port: {
+        textAlign: "center",
+        fontSize: 40,
+        fontWeight: "bold",
+        color: COLORS.text,
     },
     protocol: {
         fontSize: 30,
@@ -124,9 +135,12 @@ const styles = StyleSheet.create({
         color: COLORS.text,
     },
     divider: {
-        borderBottomWidth: 1,
+        borderTopWidth: 1,
         borderColor: COLORS.border,
         width: "100%",
+        paddingBottom: 10,
     },
+    description: {
+    }
 });
 export default Card;
