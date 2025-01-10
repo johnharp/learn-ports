@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
         height: 350,
         justifyContent: "center",
         alignItems: "left",
-        margin: 30,
     },
     header: {
         marginBottom: 1,
@@ -66,6 +65,16 @@ const styles = StyleSheet.create({
         color: COLORS.text,
         textAlign: "left",
     },
+    foldedCorner: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        width: 20,
+        height: 20,
+        backgroundColor: COLORS.card,
+        transform: [{ rotate: '45deg' }],
+        overflow: 'hidden',
+      },
 });
 
 export default CardFront;

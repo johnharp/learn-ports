@@ -1,19 +1,70 @@
-import { View, StyleSheet, Text } from "react-native";
+import { useState } from "react";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import COLORS from "../constants/colors";
-import CardFront from "./cardfront";
-import CardBack from "./cardback";
 
-function Card({ portdata }) {
+function Card() {
+    const [isFlipped, setIsFlipped] = useState(false);
+
+    const handleFlip = () => {
+        setIsFlipped((prev) => !prev);
+    }
+
     return (
-        <>
-            <CardFront portdata={portdata} />
-            <CardBack portdata={portdata} />
-        </>
+        <Pressable style={styles.container} onPress={handleFlip}>
+            {({ pressed }) => (
+                <View style={styles.cardContainer}>
+                    <View style={[styles.card, styles.front, pressed && styles.frontPressed, !isFlipped && styles.flip]}>
+                        <Text>Front</Text>
+                    </View>
+                    <View style={[styles.card, styles.back, pressed && styles.backPressed, isFlipped && styles.flip]}>
+                        <Text>Back</Text>
+                    </View>
+                </View>
+            )}
+        </Pressable>
     );
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignContent: "center",
+        justifyContent: "center",
+    },
 
+    cardContainer: {
+        width: 300,
+        height: 300,
+        perspective: 1000,
+    },
+
+    card: {
+        borderRadius: 15,
+        padding: 16,
+        backfaceVisibility: "hidden",
+        width: "100%",
+        height: "100%",
+        position: "absolute",
+    },
+
+    front: {
+        backgroundColor: COLORS.cardFront,
+    },
+
+    back: {
+        backgroundColor: COLORS.cardBack,
+    },
+
+    frontPressed: {
+        backgroundColor: COLORS.cardFrontPressed,
+    },
+
+    backPressed: {
+        backgroundColor: COLORS.cardBackPressed,
+    },
+
+    flip: {
+        transform: [{ rotateY: "180deg" }],
+    },
 });
-
 export default Card;

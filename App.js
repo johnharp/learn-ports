@@ -1,21 +1,24 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import Card from "./components/card";
+import { StyleSheet, Text, SafeAreaView } from "react-native";
+import OldCard from "./components/oldcard";
 import COLORS from "./constants/colors";
 import PORTS from "./constants/ports";
+import Card from "./components/card";
 
 export default function App() {
     return (
-        <View style={styles.container}>
-            <Card portdata={PORTS.find(p => p.protocol === "FTPS (Control)")} />
+        <SafeAreaView style={styles.container}>
+            <Card />
+            <OldCard portdata={PORTS.find(p => p.protocol === "FTPS (Control)")} />
             <StatusBar style="auto" />
-        </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: "column",
         backgroundColor: COLORS.background,
         alignItems: "center",
         justifyContent: "center",

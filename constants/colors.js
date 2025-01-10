@@ -1,6 +1,9 @@
 const COLORS = {
     primary: "#3498db",
-    card: "rgb(93, 158, 201)",
+    cardFront: "rgb(93, 158, 201)",
+    cardFrontPressed: "rgba(93, 158, 201, 0.5)",
+    cardBack: "rgb(197, 164, 102)",
+    cardBackPressed: "rgba(197, 164, 102, 0.5)",
     secondary: "#2ecc71",
     accent: "#e74c3c",
     background: "#ecf0f1",
