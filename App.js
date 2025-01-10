@@ -8,7 +8,7 @@ import Card from "./components/card";
 export default function App() {
     return (
         <SafeAreaView style={styles.container}>
-            <Card />
+            <Card portdata={PORTS.find(p => p.protocol === "FTPS (Control)")} />
             <OldCard portdata={PORTS.find(p => p.protocol === "FTPS (Control)")} />
             <StatusBar style="auto" />
         </SafeAreaView>
