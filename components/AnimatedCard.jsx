@@ -99,6 +99,10 @@ const styles = StyleSheet.create({
         perspective: 50,
         alignContent: "center",
         justifyContent: "center",
+        shadowColor: COLORS.shadow,
+        shadowRadius: 1,
+        shadowOffset: { width: 2, height: 2 },
+        shadowOpacity: 0.75,
     },
 
     card: {
