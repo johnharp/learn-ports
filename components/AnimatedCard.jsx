@@ -1,10 +1,8 @@
 import { useState } from "react";
 import {
     Animated,
-    Easing,
     Pressable,
     StyleSheet,
-    Text,
     useAnimatedValue,
     View,
 } from "react-native";
@@ -108,7 +106,7 @@ const styles = StyleSheet.create({
     card: {
         alignContent: "center",
         justifyContent: "center",
-        borderRadius: 15,
+        borderRadius: 10,
         padding: 16,
         backfaceVisibility: "hidden",
         position: "absolute",
