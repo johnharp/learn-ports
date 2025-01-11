@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     Animated,
+    Dimensions,
     Pressable,
     StyleSheet,
     useAnimatedValue,
@@ -9,9 +10,26 @@ import {
 import COLORS from "../constants/colors";
 
 function AnimatedCard({ width, height, front, back }) {
-    const [isFlipped, setIsFlipped] = useState(false);
+    const screenHeight = Dimensions.get('window').height;
+    const slideInStartingY = screenHeight/2 + height/2;
 
+    const [isFlipped, setIsFlipped] = useState(false);
     const cardRotation = useAnimatedValue(0);
+    const slideInY = useAnimatedValue(slideInStartingY);
+
+    useEffect(() => {
+        Animated.timing(slideInY, {
+            toValue: 0,
+            duration: 600,
+            useNativeDriver: true
+        }).start(slideInY.setValue(slideInStartingY));
+    }, [slideInY, front, back])
+
+    useEffect(() => {
+        setIsFlipped(false);
+        cardRotation.setValue(0);
+
+    }, [front, back])
 
     const frontCardDegrees = cardRotation.interpolate({
         inputRange: [0, 1],
@@ -59,6 +77,7 @@ function AnimatedCard({ width, height, front, back }) {
                             {
                                 transform: [
                                     { perspective: 1000 },
+                                    { translateY: slideInY },
                                     { rotateY: frontCardDegrees },
                                 ],
                             },
@@ -74,6 +93,7 @@ function AnimatedCard({ width, height, front, back }) {
                             {
                                 transform: [
                                     { perspective: 1000 },
+                                    { translateY: slideInY },
                                     { rotateY: backCardDegrees },
                                 ],
                             },
@@ -91,6 +111,7 @@ const styles = StyleSheet.create({
     pressable: {
         alignContent: "center",
         justifyContent: "center",
+        zIndex: 100,
     },
 
     cardContainer: {
